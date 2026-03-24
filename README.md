@@ -48,6 +48,24 @@ npm run build
 
 ## Quick Start
 
+Scaffold a widget with the artisan command:
+
+```bash
+php artisan make:filawidget
+```
+
+The command prompts for a name and widget type interactively. You can also pass them directly:
+
+```bash
+php artisan make:filawidget RevenueByRegionWidget --type=Breakdown
+```
+
+Available types: `SparklineTable`, `Breakdown`, `Progress`, `CompletionRate`, `HeatmapCalendar`.
+
+The generated class is placed in `app/Filament/Widgets/` with a minimal skeleton — just fill in your query logic.
+
+---
+
 Every widget follows the same pattern: extend the base class, set properties, implement `getData()`.
 
 ```php
