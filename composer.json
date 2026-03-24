@@ -1,6 +1,5 @@
 {
     "name": "laraveldaily/filawidgets",
-    "version": "0.1.0",
     "description": "Reusable Filament dashboard widgets.",
     "type": "library",
     "license": "MIT",
