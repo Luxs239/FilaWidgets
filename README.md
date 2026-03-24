@@ -4,7 +4,7 @@ Reusable Filament dashboard widgets for Laravel. Five widget types — sparkline
 
 ![](https://laraveldaily.com/uploads/2026/03/filawidgets-mainexample-01.png)
 
-![](https://laraveldaily.com/uploads/2026/03/filawidgets-mainexample-01.png)
+![](https://laraveldaily.com/uploads/2026/03/filawidgets-mainexample-02.png)
 
 ---
 
